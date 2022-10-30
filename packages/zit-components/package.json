@@ -1,0 +1,7 @@
+{
+  "name": "@zitjs/components",
+  "version": "0.0.0",
+  "devDependencies": {
+    "zitjs": "0.0.0"
+  }
+}

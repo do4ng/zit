@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "module": "esnext",
+    "target": "es2015",
+
+    "moduleResolution": "Node",
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "allowJs": true,
+    "checkJs": true,
+    "lib": ["ESNext", "DOM"],
+
+    "outDir": "types",
+    "declaration": true,
+    "emitDeclarationOnly": true,
+    "jsx": "react-jsx",
+
+    "typeRoots": ["src/global.d.ts"]
+  },
+  "include": ["src/**/*"],
+  "exclude": ["**/*/node_modules", "**/*/dist", "temp", "**/*/assets"]
+}
