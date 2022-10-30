@@ -1,7 +1,7 @@
 {
   "name": "zitjs",
   "description": "web framework working with vanilla javascript",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "keywords": [
     "web",
     "front-end",
@@ -9,6 +9,10 @@
     "ui",
     "framework"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/do4ng/zit"
+  },
   "main": "dist/index.js",
   "files": [
     "dist",
