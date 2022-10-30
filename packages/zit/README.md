@@ -2,6 +2,9 @@
 
 web framework working with vanilla javascript
 
+[🦄 npm](https://www.npmjs.com/package/zit)
+[📃 github](https://github.com/do4ng/zit)
+
 ## 📦 Install
 
 ```bash
