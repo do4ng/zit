@@ -7,7 +7,7 @@ const base = {
   platform: '',
 };
 
-const build = (pkg, entryPoint = 'src/index.ts', out = 'dist/index.js', cfg = {}) => {
+const build = (pkg, entryPoint = 'src/index.ts', out = 'dist/node.js', cfg = {}) => {
   esbuild.build({
     entryPoints: [join(process.cwd(), 'packages', pkg, entryPoint)],
     outfile: join(process.cwd(), 'packages', pkg, out),
@@ -15,10 +15,23 @@ const build = (pkg, entryPoint = 'src/index.ts', out = 'dist/index.js', cfg = {}
     plugins: [nodeExternalsPlugin({ packagePath: join(process.cwd(), 'packages', pkg, 'package.json') })],
     ...base,
     ...cfg,
-    platform: 'neutral',
-    external: ['electron'],
+    platform: 'node',
+    bundle: true,
+  });
+};
+const browser = (pkg, entryPoint = 'src/index.ts', out = 'dist/index.js', cfg = {}) => {
+  esbuild.build({
+    entryPoints: [join(process.cwd(), 'packages', pkg, entryPoint)],
+    outfile: join(process.cwd(), 'packages', pkg, out),
+    target: 'esnext',
+    ...base,
+    ...cfg,
+    platform: 'node',
+    format: 'esm',
+
     bundle: true,
   });
 };
 
 build('zit');
+browser('zit');
