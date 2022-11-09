@@ -1,4 +1,4 @@
-import { ComponentData, HTML, Tag } from '../html';
+import { ComponentData, HTML, Tag, ZitElement } from '../html';
 import { MATCH_CURLY_BRACKET } from '../lib/match';
 import { replaceDoubleQuote, replaceNewLine } from '../lib/replaceQuote';
 import { isComponent, isComponentFunc } from './html';
@@ -52,7 +52,7 @@ export function createElement(
   template: string | HTML,
   data?: object
   // eslint-disable-next-line no-unused-vars
-): (newData?: ComponentData) => string {
+): ZitElement {
   if (isComponent(template)) {
     template = HTMLtoString(template as HTML);
   } else if (isComponentFunc(template)) {
@@ -117,6 +117,10 @@ export function createElement(
   };
 
   func.__COMPONENT = true;
+
+  func.init = function (fn: () => void) {
+    fn();
+  };
 
   // @ts-ignore
   return func;
