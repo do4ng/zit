@@ -22,6 +22,6 @@ function useStore<T>(init: T): [Store<T>, (setter: (prevalue: T) => T) => void] 
   ];
 }
 
-useStore(0)[1](() => 10);
+// useStore(0)[1](() => 10);
 
 export { useStore };
