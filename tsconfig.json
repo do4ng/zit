@@ -12,11 +12,8 @@
 
     "outDir": "types",
     "declaration": true,
-    "emitDeclarationOnly": true,
-    "jsx": "react-jsx",
-
-    "typeRoots": ["src/global.d.ts"]
+    "emitDeclarationOnly": true
   },
-  "include": ["src/**/*"],
-  "exclude": ["**/*/node_modules", "**/*/dist", "temp", "**/*/assets"]
+  "include": ["pacakges/**/*"],
+  "exclude": ["node_modules", "**/*/dist"]
 }
