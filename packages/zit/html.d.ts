@@ -20,3 +20,5 @@ export interface Tag {
   tagName?: string;
   attributes?: object;
 }
+
+export type ZitElement = (newData?: ComponentData) => string;

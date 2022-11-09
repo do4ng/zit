@@ -43,4 +43,15 @@ export function html(...data: any[]): string;
 export type StoreOutput<T> = [Store<T>, (setter: (prevalue: T) => T) => void];
 export function useStore<T>(init: T): StoreOutput<T>;
 
+export interface CustomComponent {
+  name: string;
+}
+
+interface Routing {
+  [key: string]: { template: any; js?: (params: object) => void; beforeLoad?: () => Promise<object> | object };
+}
+export function useRouter(routing: Routing, target: HTMLElement): void;
+
+// dev in progress
+export function compiler(...data: any[]): string;
 export * from '../html';
