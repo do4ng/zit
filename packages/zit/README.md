@@ -14,9 +14,9 @@ yarn add -D zit
 
 ```ts
 // esm (browser)
-import * as zit from 'zit';
+import * as zit from 'zitjs';
 // cjs (server)
-const zit = require('zit');
+const zit = require('zitjs');
 ```
 
 ## 🚀 Usage
@@ -39,6 +39,19 @@ console.log(app);
 /*
 <h1>hello world</h1>
 */
+```
+
+## 🛠️ Router
+
+```ts
+const userPage = zit.createElement("div", "{{user}}'s page")
+
+zit.useRouter({
+  {
+    '/': "<div>Main Page</div>",
+    "/users/:user": userPage // use params
+  }
+}, document.getElementById('app'));
 ```
 
 ## License
