@@ -1,7 +1,7 @@
 {
   "name": "zitjs",
   "description": "web framework working with vanilla javascript",
-  "version": "0.0.1",
+  "version": "1.0.0-beta.8",
   "keywords": [
     "web",
     "front-end",
@@ -20,5 +20,8 @@
     "html.d.ts"
   ],
   "license": "MIT",
-  "types": "types/index.d.ts"
+  "types": "types/index.d.ts",
+  "dependencies": {
+    "path-to-regexp": "^6.2.1"
+  }
 }
