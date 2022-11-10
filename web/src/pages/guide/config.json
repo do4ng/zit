@@ -1,0 +1,10 @@
+[
+  {
+    "category": "Guide",
+    "posts": [
+      ["getting-started", "getting started"],
+      ["first-project", "first project"],
+      ["using-router", "using router"]
+    ]
+  }
+]
