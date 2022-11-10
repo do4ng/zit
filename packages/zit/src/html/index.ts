@@ -23,7 +23,6 @@ export function html(...data: any[]) {
     let component = dataArray[index] || '';
 
     returnHTML += str;
-
     if (isComponentFunc(component)) component = component();
     if (isComponent(component)) component = HTMLtoString(component);
     if (isStore(component)) {
@@ -40,6 +39,9 @@ export function html(...data: any[]) {
           console.warn(e);
         }
       });
+    }
+    if (Array.isArray(component)) {
+      component = component.join('');
     }
 
     returnHTML += component;
