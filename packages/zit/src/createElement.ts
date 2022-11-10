@@ -6,30 +6,47 @@ import { HTMLtoString } from './html/transform';
 
 function createVariables(data: object) {
   let code = '';
-
   Object.keys(data).forEach((key) => {
-    data[key] = replaceDoubleQuote(data[key]);
-    data[key] = replaceNewLine(data[key]);
+    data[key] = replaceDoubleQuote(data[key].toString());
+    data[key] = replaceNewLine(data[key].toString());
+    data[key] = data[key].replace(/\\\\/g, '\\');
 
-    if (typeof data[key] === 'string') data[key] = `"${data[key]}"`;
-    code += `var ${key} = ${data[key]};`;
+    code += `var ${key} = "${data[key]}";`;
   });
 
   return code;
 }
 
 function runCode(data: object, code: string) {
-  return new Function(`
+  const running = `
   ${createVariables(data)};
   
-  return ${code}`)();
+  return ${code}`;
+  let result = '';
+  try {
+    result = new Function(running)();
+  } catch (e) {
+    console.log(`error func: \n\nrunning: ${running}\n\nresult: ${result}\n"{{${code}}}" ignored.`);
+    console.error(e);
+    result = `{{${code}}}`;
+  }
+
+  return result;
 }
 
 function insertData(str: string, data: object) {
-  return str.replace(MATCH_CURLY_BRACKET, (match) => runCode(data, match.slice(2, match.length - 2)));
+  let result = '';
+  try {
+    result = str.replace(MATCH_CURLY_BRACKET, (match) => runCode(data, match.slice(2, match.length - 2)));
+  } catch (e) {
+    console.log(`error data: ${JSON.stringify({ data })}`);
+    console.error(e);
+  }
+  return result;
 }
 
 function parseTagAttributes(t: Tag) {
+  if (!t) return '';
   let attrString = '';
 
   if (t.attributes !== undefined) {
@@ -37,7 +54,7 @@ function parseTagAttributes(t: Tag) {
       // @ts-ignore
       if (t.attributes[key]) {
         // @ts-ignore
-        attrString += `${key}=${t.attributes[key]} `;
+        attrString += `${key}="${t.attributes[key]}" `;
       } else {
         attrString += `${key} `;
       }
@@ -92,7 +109,6 @@ export function createElement(
     }
 
     /* data */
-
     htmlCopy = insertData(htmlCopy, newData);
 
     /* parse tag data */
@@ -107,7 +123,7 @@ export function createElement(
       tag = {};
     }
 
-    const stringTag = `${tag.tagName ? `<${tag.tagName} ${parseTagAttributes(tag.attributes as any)}>` : ''}
+    const stringTag = `${tag.tagName ? `<${tag.tagName} ${parseTagAttributes(tag as any)}>` : ''}
     ${htmlCopy}
     ${tag.tagName ? `</${tag.tagName}>` : ''}`;
 
