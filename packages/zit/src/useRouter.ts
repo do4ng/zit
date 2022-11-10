@@ -70,16 +70,21 @@ async function useRouter(routing: Routing, target: HTMLElement) {
     params = match(sorted[0].page)(window.location.pathname).params;
 
     let templateOutput = component.template;
+    if (component.beforeLoad) fetchedData = await component.beforeLoad({ params });
 
     /* function */
     if (typeof component.template === 'function' && component.template.__COMPONENT) {
       templateOutput = component.template({ ...params, ...fetchedData });
     }
 
-    if (component.beforeLoad) fetchedData = await component.beforeLoad({ params });
-
     target.innerHTML = templateOutput as string;
 
+    if (component.js) {
+      // @ts-ignore
+      const { params } = match(sorted[0].page)(window.location.pathname);
+
+      await component.js(params);
+    }
     // add a tags listener
 
     document.querySelectorAll('a').forEach((link) => {
@@ -91,12 +96,22 @@ async function useRouter(routing: Routing, target: HTMLElement) {
         useRouter(routing, target);
       });
     });
+  } else if ('__404' in routing) {
+    // 404
 
-    if (component.js) {
-      // @ts-ignore
-      const { params } = match(sorted[0].page)(window.location.pathname);
+    const component = routing.__404;
+    let output = component.template;
 
-      component.js(params);
+    if (typeof component.template === 'function' && component.template.__COMPONENT) {
+      output = component.template();
+    }
+
+    target.innerHTML = output;
+
+    // warning
+
+    if (component.js || component.beforeLoad) {
+      console.warn("route.js or route.beforeLoad doesn't work in 404 page");
     }
   }
 }
