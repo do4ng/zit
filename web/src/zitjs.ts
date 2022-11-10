@@ -1,1 +1,1 @@
-export * from '../dist/zit';
+export * from 'zitjs';
