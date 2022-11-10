@@ -1,6 +1,6 @@
 export function replaceDoubleQuote(str: string): string {
-  return str.replace(/"/g, '\\"');
+  return str.toString().replace(/"/g, '\\"');
 }
 export function replaceNewLine(str: string): string {
-  return str.replace(/\n/g, '\\n');
+  return str.replace(/(?:\r\n|\r|\n)/g, '\\n');
 }
