@@ -12,5 +12,9 @@
     "unified": "^10.1.2",
     "vite": "^3.2.3",
     "zitjs": "^1.0.0-beta.15"
+  },
+  "scripts": {
+    "build": "vite build",
+    "dev": "vite"
   }
 }
