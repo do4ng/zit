@@ -14,9 +14,12 @@
   },
   "private": true,
   "workspaces": [
-    "packages/**/*"
+    "packages/**/*",
+    "web"
   ],
   "scripts": {
-    "build": "node scripts/build.js"
+    "build": "node scripts/build.js",
+    "example": "cd example && vite",
+    "dev": "cd web && vite"
   }
 }
