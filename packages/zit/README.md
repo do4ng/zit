@@ -48,8 +48,8 @@ const userPage = zit.createElement("div", "{{user}}'s page")
 
 zit.useRouter({
   {
-    '/': "<div>Main Page</div>",
-    "/users/:user": userPage // use params
+    '/': { template: "<div>Main Page</div>" },
+    "/users/:user": { template: userPage } // use params
   }
 }, document.getElementById('app'));
 ```
