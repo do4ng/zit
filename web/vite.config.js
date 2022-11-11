@@ -7,5 +7,5 @@ export default vite.defineConfig({
       input: './index.html',
     },
   },
-  publicDir: '.',
+  publicDir: 'docs',
 });
