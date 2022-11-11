@@ -1,7 +1,8 @@
+// @ts-ignore
 import { createElement, html } from '../zitjs';
 import { markdownToHtml } from '../markdown';
 
-import posts from './guide/config.json';
+import posts from './config.json';
 
 const postList: string[] = [];
 const titleList: string[] = [];
@@ -56,7 +57,7 @@ export default {
     next = postList[postList.indexOf(now) + 1];
     pre = postList[postList.indexOf(now) - 1];
     console.log(sliced, now, next, pre, postList.indexOf(now));
-    const app = await fetch(`/src/pages/guide/${params.slug}.md`);
+    const app = await fetch(`/guide/${params.slug}.md`);
 
     const text = await app.text();
 
