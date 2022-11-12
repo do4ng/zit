@@ -48,7 +48,7 @@ export interface CustomComponent {
 }
 
 interface Routing {
-  [key: string]: { template: any; js?: (params: object) => void; beforeLoad?: () => Promise<object> | object };
+  [key: string]: { template: any; js?: (params: object) => void; beforeLoad?: (data: any) => Promise<object> | object };
 }
 export function useRouter(routing: Routing, target: HTMLElement): void;
 
