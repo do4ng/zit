@@ -6,5 +6,14 @@
       ["first-project", "first project"],
       ["using-router", "using router"]
     ]
+  },
+  {
+    "category": "Javascript Api",
+    "posts": [
+      ["api-createElement", "create element"],
+      ["api-html", "html"],
+      ["api-router", "use router"],
+      ["api-store", "use store"]
+    ]
   }
 ]
