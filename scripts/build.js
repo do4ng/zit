@@ -36,11 +36,23 @@ const browser = (pkg, entryPoint = 'src/index.ts', out = 'dist/index.js', cfg = 
     ...base,
     ...cfg,
     platform: 'node',
+
+    bundle: true,
+  });
+};
+const esm = (pkg, entryPoint = 'src/index.ts', out = 'dist/index.esm.js', cfg = {}) => {
+  esbuild.build({
+    entryPoints: [join(process.cwd(), 'packages', pkg, entryPoint)],
+    outfile: join(process.cwd(), 'packages', pkg, out),
+    target: 'esnext',
+    ...base,
+    ...cfg,
+    platform: 'node',
     format: 'esm',
 
     bundle: true,
   });
 };
-
 build('zit');
 browser('zit');
+esm('zit');
