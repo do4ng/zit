@@ -4,5 +4,6 @@
   <div>
     <a href="https://www.npmjs.com/package/zitjs">🦄 npm</a> 
     <a href="https://github.com/do4ng/zit">📃 github</a>
+    <a href="https://zitjs.netlify.app/">📜 Documentation</a> 
   </div>
 </div>

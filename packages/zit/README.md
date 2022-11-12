@@ -4,6 +4,7 @@ web framework working with vanilla javascript
 
 [🦄 npm](https://www.npmjs.com/package/zitjs)
 [📃 github](https://github.com/do4ng/zit)
+[📜 docs](https://zitjs.netlify.app/)
 
 ## 📦 Install
 
