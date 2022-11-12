@@ -26,8 +26,6 @@ function runCode(data: object, code: string) {
   try {
     result = new Function(running)();
   } catch (e) {
-    console.log(`error func: \n\nrunning: ${running}\n\nresult: ${result}\n"{{${code}}}" ignored.`);
-    console.error(e);
     result = `{{${code}}}`;
   }
 
@@ -38,10 +36,7 @@ function insertData(str: string, data: object) {
   let result = '';
   try {
     result = str.replace(MATCH_CURLY_BRACKET, (match) => runCode(data, match.slice(2, match.length - 2)));
-  } catch (e) {
-    console.log(`error data: ${JSON.stringify({ data })}`);
-    console.error(e);
-  }
+  } catch (e) {}
   return result;
 }
 
