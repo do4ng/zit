@@ -29,7 +29,7 @@ main
 
 */
 
-const user = zit.createElement(null, "<strong>{{user}}</strong>'s page");
+const user = zit.createElement(null, "<strong>{{user}}</strong>'s page\n{{text}}");
 
 const routing = {
   // main
@@ -57,6 +57,11 @@ const routing = {
   // users
   '/users/:user': {
     template: user,
+    beforeLoad: async () => {
+      const app = '';
+
+      return { text: app };
+    },
   },
 };
 
