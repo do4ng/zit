@@ -44,7 +44,7 @@ export default html`
 // create component
 const greeting = zit.createElement("div", "Hello, {{name}}");
 // show
-document.body.innerHTML = zit.html\`\${greeting("world")}\`;`,
+document.body.innerHTML = zit.html\`\${greeting({name: "world"})}\`;`,
         'Hello, world'
       )}
     </div>
