@@ -8,11 +8,12 @@ import page404 from './pages/404';
 
 import '../styles/documents.scss';
 
-zit.useRouter(
+(zit as any).useRouter(
   {
     '/': {
       template: MainPage,
     },
+    // @ts-ignore
     '/guide/:slug': docs,
     __404: page404,
   },
