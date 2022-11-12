@@ -35,6 +35,8 @@ const attr = createElement({ tagName: 'a', attributes: { href: '#' } }, 'Go');
 // => <a href="#">Go</a>
 ```
 
+[Documentation](/guide/api-createElement)
+
 ## Edit Router
 
 ```ts

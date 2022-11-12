@@ -1,4 +1,4 @@
-# first project
+# First Project
 
 ## Before start
 
