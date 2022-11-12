@@ -99,12 +99,41 @@
   }
 }
 .pre-next {
-  margin-top: 65px;
-  padding-bottom: 50px;
+  margin-top: 105px;
+  padding-bottom: 110px;
   a[pre] {
     float: left;
   }
   a[next] {
     float: right;
+    text-align: right;
   }
+
+  a {
+    font-size: 0.85rem;
+    width: 50%;
+  }
+  .prext {
+    padding: 10px 15px;
+    border-radius: 7px;
+    border: 1px solid #b6b6b685;
+    width: 85%;
+
+    .prext-title {
+      color: rgba(71, 71, 71, 0.651);
+    }
+    .prext-content {
+      font-size: 1rem;
+      padding-top: 5px;
+    }
+  }
+  .prext:hover {
+    border: 1px solid #646cff;
+  }
+}
+blockquote {
+  border-left: 4px solid rgb(207, 207, 207);
+  padding-left: 1em;
+  border-radius: 1px;
+  margin: 2.3em 0;
 }

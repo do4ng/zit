@@ -1,4 +1,3 @@
-// @ts-ignore
 import { createElement, html } from '../zitjs';
 import { markdownToHtml } from '../markdown';
 
@@ -37,12 +36,11 @@ ${posts.map(
 )}
 `
 );
-console.log(pre, next, now);
 const post = createElement(
   { tagName: 'div', attributes: { class: 'post-container' } },
   html`<div class="post">
     {{text}}
-    <div class="pre-next">{{prePage}} {{nextPage}}</div>
+    <div class="pre-next">{{prePage}}{{nextPage}}</div>
   </div>`
 );
 
@@ -56,15 +54,27 @@ export default {
     now = sliced[sliced.length - 1];
     next = postList[postList.indexOf(now) + 1];
     pre = postList[postList.indexOf(now) - 1];
-    console.log(sliced, now, next, pre, postList.indexOf(now));
     const app = await fetch(`/guide/${params.slug}.md`);
 
     const text = await app.text();
 
     return {
       text: markdownToHtml(text).html,
-      prePage: pre ? `<a href="/guide/${pre}" pre>Previous Page</a>` : '',
-      nextPage: next ? `<a href="/guide/${next}" next>Next Page</a>` : '',
+      prePage: pre
+        ? `<a href="/guide/${pre}" pre>
+      <div class="prext">
+        <div class="prext-title">Previous Page</div>
+        <div class="prext-content">${titleList[postList.indexOf(pre)]}</div>
+      </div></a>`
+        : '',
+      nextPage: next
+        ? `<a href="/guide/${next}" next>
+        <div class="prext">
+          <div class="prext-title">Next Page</div>
+          <div class="prext-content">${titleList[postList.indexOf(next)]}</div>
+        </div>
+        </a>`
+        : '',
     };
   },
   js: () => {},
