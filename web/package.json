@@ -9,8 +9,8 @@
     "zitjs": "^1.0.0"
   },
   "scripts": {
-    "build": "vite build",
-    "dev": "vite",
+    "build": "npm run docs && vite build",
+    "dev": "npm run docs && vite",
     "docs": "node helper/index.js"
   }
 }
