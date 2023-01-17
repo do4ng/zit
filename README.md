@@ -18,6 +18,8 @@
 
 > 🛠️ v1.1 is in beta! -- [see more](https://zitjs.netlify.app/guide/migration-1-1)
 
+---
+
 ## Installation
 
 [Read Start Guide](https://zitjs.netlify.app/guide/first-project) or follow steps below.
