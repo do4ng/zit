@@ -1,12 +1,7 @@
 import { random } from '../../lib/random';
 import { Store } from '../store/store';
-import { HTMLtoString } from './transform';
 
 export function isComponent(c: any) {
-  return typeof c === 'object' && c?.__HTML;
-}
-
-export function isComponentFunc(c: any) {
   return typeof c === 'function' && c?.__COMPONENT;
 }
 export function isStore(c: any) {
@@ -23,8 +18,7 @@ export function html(...data: any[]) {
     let component = dataArray[index] || '';
 
     returnHTML += str;
-    if (isComponentFunc(component)) component = component();
-    if (isComponent(component)) component = HTMLtoString(component);
+    if (isComponent(component)) component = component();
     if (isStore(component)) {
       /* store */
       const hash = random();

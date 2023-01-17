@@ -17,6 +17,10 @@ export interface HTML {
 export type ComponentData = string | object | null | Function | HTML;
 
 export interface Tag {
+  tag?: string;
+  /**
+   * same: `tag`
+   */
   tagName?: string;
   attributes?: object;
 }

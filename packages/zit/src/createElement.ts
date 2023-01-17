@@ -1,8 +1,7 @@
 import { ComponentData, HTML, Tag, ZitElement } from '../html';
 import { MATCH_CURLY_BRACKET } from '../lib/match';
 import { replaceDoubleQuote, replaceNewLine } from '../lib/replaceQuote';
-import { isComponent, isComponentFunc } from './html';
-import { HTMLtoString } from './html/transform';
+import { isComponent } from './html';
 
 function createVariables(data: object) {
   let code = '';
@@ -68,8 +67,6 @@ export function createElement(
   // eslint-disable-next-line no-unused-vars
 ): ZitElement {
   if (isComponent(template)) {
-    template = HTMLtoString(template as HTML);
-  } else if (isComponentFunc(template)) {
     template = (template as any)();
   } else if (typeof template !== 'string') {
     /* error */
@@ -96,10 +93,6 @@ export function createElement(
 
       newData = { slug: newData };
     } else if (isComponent(newData)) {
-      /* slug: component */
-
-      newData = { slug: HTMLtoString(newData as HTML) };
-    } else if (isComponentFunc(newData)) {
       /* slug: func */
 
       newData = { slug: (newData as Function)() };
@@ -112,17 +105,19 @@ export function createElement(
 
     if (typeof tag === 'string') {
       tag = {
-        tagName: tag,
+        tag,
         attributes: {},
       };
+    } else if (typeof tag === 'object') {
+      tag = { ...tag, tag: tag.tag || tag.tagName || null };
     }
     if (!tag) {
       tag = {};
     }
 
-    const stringTag = `${tag.tagName ? `<${tag.tagName} ${parseTagAttributes(tag as any)}>` : ''}
+    const stringTag = `${tag.tag ? `<${tag.tag} ${parseTagAttributes(tag as any)}>` : ''}
     ${htmlCopy}
-    ${tag.tagName ? `</${tag.tagName}>` : ''}`;
+    ${tag.tag ? `</${tag.tag}>` : ''}`;
 
     // console.log(stringTag);
 
