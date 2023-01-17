@@ -1,6 +1,21 @@
+/* eslint-disable class-methods-use-this */
 /* eslint-disable no-unused-expressions */
 /* eslint-disable no-undef */
-import * as zit from '../packages/zit/dist';
+// @ts-ignore
+import * as zit from '../packages/zit/dist/index.esm';
+
+class MyComponent extends zit.ZitComponent {
+  constructor() {
+    super();
+    this.component.name = 'my-component';
+  }
+
+  render() {
+    return '<p>Hello World!</p>';
+  }
+}
+
+zit.defineComponent(MyComponent);
 
 const [count, setCount] = zit.useStore(0);
 
@@ -44,9 +59,11 @@ const routing = {
     template: result,
     js: () => {
       function up() {
+        // @ts-ignore
         setCount((pre) => pre + 1);
       }
       function down() {
+        // @ts-ignore
         setCount((pre) => pre - 1);
       }
 
