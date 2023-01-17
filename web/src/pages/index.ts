@@ -1,5 +1,4 @@
 import { html } from '../zitjs';
-import { editor } from '../components';
 
 export default html`
   <div id="header">
@@ -37,16 +36,6 @@ export default html`
       </div>
     </div>
 
-    <div id="example">
-      ${editor(
-        `import * as zit from "zitjs";
-
-// create component
-const greeting = zit.createElement("div", "Hello, {{name}}");
-// show
-document.body.innerHTML = zit.html\`\${greeting({name: "world"})}\`;`,
-        'Hello, world'
-      )}
-    </div>
+    <div id="example"></div>
   </div>
 `;

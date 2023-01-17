@@ -1,7 +1,7 @@
 import { createElement, html } from '../zitjs';
-import { markdownToHtml } from '../markdown';
 
 import posts from './config.json';
+import docs from './posts.json';
 
 const postList: string[] = [];
 const titleList: string[] = [];
@@ -22,18 +22,20 @@ const sideList = createElement(
   { tagName: 'div', attributes: { class: 'side-list' } },
   `
 <div class="logo"><a href="/" class="no-a">zit <span class="logo-docs">docs</span></a></div>
-${posts.map(
-  (category) => html` <div class="category">
-    <div class="category-name">${category.category}</div>
-    <div class="category-content">
-      ${category.posts.map(
-        (post) => html` <div class="category-post">
-          <a href="/guide/${post[0]}" class="${post[0] === now ? 'active-post' : ''}">${post[1]}</a>
-        </div>`
-      )}
-    </div>
-  </div>`
-)}
+${posts
+  .map(
+    (category) => html` <div class="category">
+      <div class="category-name">${category.category}</div>
+      <div class="category-content">
+        ${category.posts.map(
+          (post) => html` <div class="category-post">
+            <a href="/guide/${post[0]}" class="${post[0] === now ? 'active-post' : ''}">${post[1]}</a>
+          </div>`
+        )}
+      </div>
+    </div>`
+  )
+  .join('')}
 `
 );
 const post = createElement(
@@ -54,12 +56,12 @@ export default {
     now = sliced[sliced.length - 1];
     next = postList[postList.indexOf(now) + 1];
     pre = postList[postList.indexOf(now) - 1];
-    const app = await fetch(`/guide/${params.slug}.md`);
+    const text = docs[`${params.slug}.md`];
 
-    const text = await app.text();
+    console.log(text, params.slug);
 
     return {
-      text: markdownToHtml(text).html,
+      text: text.html,
       prePage: pre
         ? `<a href="/guide/${pre}" pre>
       <div class="prext">
