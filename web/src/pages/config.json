@@ -13,7 +13,12 @@
       ["api-createElement", "create element"],
       ["api-html", "html"],
       ["api-router", "use router"],
-      ["api-store", "use store"]
+      ["api-store", "use store"],
+      ["api-component", "components"]
     ]
+  },
+  {
+    "category": "Migration",
+    "posts": [["migration-1-1", "Migration to v1.1"]]
   }
 ]
