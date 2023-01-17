@@ -36,7 +36,9 @@ function insertData(str: string, data: object) {
   let result = '';
   try {
     result = str.replace(MATCH_CURLY_BRACKET, (match) => runCode(data, match.slice(2, match.length - 2)));
-  } catch (e) {}
+  } catch (e) {
+    /* empty */
+  }
   return result;
 }
 

@@ -43,5 +43,7 @@ module.exports = {
     'no-return-await': 'off',
     'no-useless-escape': 'off',
     'no-new-func': 'off',
+    'no-continue': 'off',
+    'prefer-destructuring': 'off',
   },
 };
