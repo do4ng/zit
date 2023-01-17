@@ -26,7 +26,6 @@ export function createElement(
 ): ElementOutput;
 
 export function isComponent(c: any): boolean;
-export function isComponentFunc(c: any): boolean;
 
 /**
  * ```js
@@ -55,3 +54,13 @@ export function useRouter(routing: Routing, target: HTMLElement): void;
 // dev in progress
 export function compiler(...data: any[]): string;
 export * from '../html';
+export interface ComponentOptions {
+  name: string;
+}
+
+export class ZitComponent extends HTMLElement {
+  public component: ComponentOptions;
+  constructor();
+  render(): string;
+}
+export function defineComponent(component: typeof ZitComponent): void;

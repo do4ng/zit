@@ -5,3 +5,4 @@ export * from './store/store';
 export * from '../compiler';
 export * from '../components/components';
 export * from './useRouter';
+export * from './component';
