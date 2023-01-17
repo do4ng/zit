@@ -12,8 +12,8 @@
   a {
     min-width: 100%;
     text-decoration: none;
-    font-weight: 300;
-    font-size: 0.95rem;
+    font-weight: 400;
+    font-size: 1rem;
   }
 
   .category {
@@ -48,7 +48,7 @@
     margin-bottom: 5px;
   }
   .category-post {
-    font-size: bold;
+    font-weight: bold;
     font-size: 1.15rem;
   }
 }
@@ -60,6 +60,10 @@
   height: 100vh;
 }
 
+ul,
+ol {
+  padding-left: 30px;
+}
 .post {
   color: #333541;
   width: 72%;
@@ -91,11 +95,16 @@
   pre {
     border-radius: 5px;
   }
-  code:not(.hljs) {
+  pre {
     font-size: 0.85rem;
     border-radius: 2px;
     background-color: #f6f8fa;
     padding: 2px 4px;
+  }
+  pre.shiki {
+    padding: 15px 20px;
+    border-radius: 7px;
+    overflow: auto;
   }
 }
 .pre-next {
@@ -136,4 +145,10 @@ blockquote {
   padding-left: 1em;
   border-radius: 1px;
   margin: 2.3em 0;
+}
+
+hr {
+  margin: 35px 0;
+  border: 2px solid #b1b3b656;
+  border-radius: 2px;
 }
