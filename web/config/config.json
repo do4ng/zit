@@ -18,6 +18,10 @@
     ]
   },
   {
+    "category": "Examples",
+    "posts": [["ex-documentation", "Documentation"]]
+  },
+  {
     "category": "Migration",
     "posts": [["migration-1-1", "Migration to v1.1"]]
   }

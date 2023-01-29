@@ -1,0 +1,6 @@
+{
+  "github": "https://github.com/do4ng/zit",
+  "name": "zit",
+  "entry": "/guide/getting-started",
+  "description": "Fast, Light, Easy Javascript Web Framework"
+}
