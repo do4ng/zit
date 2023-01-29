@@ -2,19 +2,19 @@
   {
     "category": "Guide",
     "posts": [
-      ["getting-started", "getting started"],
-      ["first-project", "first project"],
-      ["using-router", "using router"]
+      ["getting-started", "Getting started"],
+      ["first-project", "First project"],
+      ["using-router", "Using router"]
     ]
   },
   {
     "category": "Javascript Api",
     "posts": [
-      ["api-createElement", "create element"],
-      ["api-html", "html"],
-      ["api-router", "use router"],
-      ["api-store", "use store"],
-      ["api-component", "components"]
+      ["api-createElement", "Create element"],
+      ["api-html", "HTML"],
+      ["api-router", "Use router"],
+      ["api-store", "Use store"],
+      ["api-component", "Components"]
     ]
   },
   {
