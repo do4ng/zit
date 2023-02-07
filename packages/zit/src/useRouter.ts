@@ -15,13 +15,19 @@ async function useRouter(routing: Routing, target: HTMLElement) {
   Object.keys(routing).forEach((route) => console.log(route, routing[route].template));
   */
 
+  const path = window.location.pathname;
+
   if (typeof window === 'undefined') return;
 
   /* init */
 
-  window.addEventListener('popstate', () => {
-    useRouter(routing, target);
-  });
+  window.onpopstate = (ev) => {
+    if (path === window.location.pathname) {
+      console.log('hash changed.');
+    } else {
+      useRouter(routing, target);
+    }
+  };
 
   /* find matched pages */
 
@@ -89,11 +95,14 @@ async function useRouter(routing: Routing, target: HTMLElement) {
 
     document.querySelectorAll('a').forEach((link) => {
       link.addEventListener('click', (evt) => {
-        window.history.pushState('page', 't', link.getAttribute('href') || null);
-        evt.preventDefault();
+        if (!link.getAttribute('href')?.startsWith('#')) {
+          console.log(window.location.pathname);
+          window.history.pushState('page', 't', link.getAttribute('href') || null);
+          evt.preventDefault();
 
-        // re render
-        useRouter(routing, target);
+          // re render
+          useRouter(routing, target);
+        }
       });
     });
   } else if ('__404' in routing) {

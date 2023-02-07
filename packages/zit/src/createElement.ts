@@ -109,7 +109,7 @@ export function createElement(
         attributes: {},
       };
     } else if (typeof tag === 'object') {
-      tag = { ...tag, tag: tag.tag || tag.tagName || null };
+      tag = { ...tag, tag: tag?.tag || tag?.tagName || null };
     }
     if (!tag) {
       tag = {};

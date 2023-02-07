@@ -52,7 +52,7 @@ const routing = {
     template:
       // eslint-disable-next-line no-multi-str
       '<h1>Hello World!</h1>\
-      <a href="/counter">Counter</a> <a href="/users/0">user 0</a> <a href="/users/1">user 1</a>',
+      <a href="/counter">Counter</a> <a href="#hello">#Hello</a> <a href="/users/0">user 0</a> <a href="/users/1">user 1</a>',
   },
   // counter
   '/counter': {
