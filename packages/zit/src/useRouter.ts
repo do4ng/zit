@@ -20,7 +20,6 @@ async function useRouter(routing: Routing, target: HTMLElement) {
   if (typeof window === 'undefined') return;
 
   /* init */
-
   window.onpopstate = (ev) => {
     if (path === window.location.pathname) {
       console.log('hash changed.');
@@ -122,6 +121,12 @@ async function useRouter(routing: Routing, target: HTMLElement) {
     if (component.js || component.beforeLoad) {
       console.warn("route.js or route.beforeLoad doesn't work in 404 page");
     }
+  }
+
+  if (window.location.hash) {
+    document.getElementById(window.location.hash.slice(1)).scrollIntoView({
+      behavior: 'smooth',
+    });
   }
 }
 
